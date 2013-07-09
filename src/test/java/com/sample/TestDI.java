@@ -22,7 +22,7 @@ public class TestDI {
 
     @Before
     public void setUp() {
-        counter = GuiceFactory.getInjector().getInstance(Key.get(ActorRef.class, Names.named("counter")));
+        counter = GuiceFactory.getActor("counter");
     }
 
     @Test
