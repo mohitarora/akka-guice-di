@@ -25,12 +25,18 @@ public class GuiceModule extends AbstractModule {
         return actorSystem;
     }
 
+    /**
+     * This actor is created so that actor system gets initialized with all the actors.
+     *
+     * @param actorSystem
+     * @return
+     */
     @Provides
-    @Named("counter")
+    @Named(MasterActor.MASTER_ACTOR_NAME)
     @Singleton
-    public ActorRef countingActor(ActorSystem actorSystem) {
+    public ActorRef masterActor(ActorSystem actorSystem) {
         return actorSystem.actorOf(
-                GuiceExtProvider.get(actorSystem).props(CountingActor.class), "directCounter");
+                GuiceFactory.getActorExtension().props(MasterActor.class), MasterActor.MASTER_ACTOR_NAME);
     }
 
 }
