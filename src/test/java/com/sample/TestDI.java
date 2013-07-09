@@ -2,6 +2,9 @@ package com.sample;
 
 import akka.actor.ActorRef;
 import akka.util.Timeout;
+import com.google.inject.Key;
+import com.google.inject.name.Named;
+import com.google.inject.name.Names;
 import org.junit.Before;
 import org.junit.Test;
 import scala.concurrent.Await;
@@ -19,7 +22,7 @@ public class TestDI {
 
     @Before
     public void setUp() {
-        counter = GuiceFactory.getInjector().getInstance(ActorRef.class);
+        counter = GuiceFactory.getInjector().getInstance(Key.get(ActorRef.class, Names.named("counter")));
     }
 
     @Test
