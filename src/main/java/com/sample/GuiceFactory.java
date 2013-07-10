@@ -26,13 +26,4 @@ public class GuiceFactory {
         return getInjector().getInstance(Key.get(ActorRef.class, Names.named(MasterActor.MASTER_ACTOR_NAME)));
     }
 
-    /**
-     * Returns the actor extension. This actor extension can be used to create props. Props will be further used to create actors and these
-     * actors will have all the dependencies injected.
-     *
-     * @return
-     */
-    public static GuiceExtension.GuiceExt getActorExtension() {
-        return GuiceExtProvider.get(getInjector().getInstance(ActorSystem.class));
-    }
 }

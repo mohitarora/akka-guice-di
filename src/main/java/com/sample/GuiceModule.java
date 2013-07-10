@@ -36,7 +36,7 @@ public class GuiceModule extends AbstractModule {
     @Singleton
     public ActorRef masterActor(ActorSystem actorSystem) {
         return actorSystem.actorOf(
-                GuiceFactory.getActorExtension().props(MasterActor.class), MasterActor.MASTER_ACTOR_NAME);
+                GuiceExtProvider.get(actorSystem).props(MasterActor.class), MasterActor.MASTER_ACTOR_NAME);
     }
 
 }
